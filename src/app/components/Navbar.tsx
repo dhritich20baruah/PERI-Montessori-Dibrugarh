@@ -11,8 +11,8 @@ export default function Navbar() {
   }
 
   return (
-    <div className="w-screen bg-white top-0 md:fixed">
-      <nav className="md:flex justify-between text-orange-700 my-3 mx-10 text-lg">
+    <div className="w-screen bg-white">
+      <nav className="md:flex justify-between text-orange-700 py-3 mx-10 text-lg">
         <div className="flex justify-between">
           <Link href="/">
             <Image src="/perilogo.jpg" alt="PERI" width={500} height={500} className="w-20 h-auto"/>
