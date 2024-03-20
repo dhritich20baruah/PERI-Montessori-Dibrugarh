@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Navbar from "./components/Navbar";
+import Counter from "./components/counters";
 
 export default function Home() {
   return (
@@ -71,6 +72,10 @@ export default function Home() {
         </div>
       </div>
 
+      <div className="stats">
+        <Counter/>
+      </div>
+
       <div className="courses min-h-full flex md:flex-row flex-col p-10">
       <div className="m-5 w-1/2 flex justify-center">
         <Image
@@ -95,7 +100,7 @@ export default function Home() {
             duration: One year 
             </li>
             <li><span className="text-orange-600 font-bold">&#x2713;</span> 
-            Diploma in Montessori (pre-primary) Teachers Training Course duration: Six Months
+            Diploma in Montessori &#40; pre-primary &#41; Teachers Training Course duration: Six Months
             </li>
             <li><span className="text-orange-600 font-bold">&#x2713;</span> 
             Certificate course in Montessori Teachers Training Course duration: Three months 
