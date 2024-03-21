@@ -1,8 +1,14 @@
 import Image from "next/image";
 import Navbar from "./components/Navbar";
 import Counter from "./components/counters";
+import Link from "next/link";
+import { pool } from "@/utils/dbConnect";
+import parse from "html-react-parser";
 
-export default function Home() {
+export default async function Home() {
+  const data = await pool.query(`SELECT * FROM blog`);
+  const items = data.rows;
+
   return (
     <main>
       <div className="md:fixed z-10 top-0">
@@ -40,7 +46,7 @@ export default function Home() {
         />
       </div>
 
-      <div className="message md:flex md:flex-row flex-col">
+      <div className="message md:flex md:flex-row flex-col" id="about">
         <div className="p-10 md:w-1/2 mx-auto">
           <h1 className="text-2xl font-semibold text-orange-700">Our Aim</h1>
           <p className="my-5 text-lg text-justify">
@@ -73,12 +79,12 @@ export default function Home() {
       </div>
 
       <div className="stats">
-        <Counter/>
+        <Counter />
       </div>
 
-      <div className="courses min-h-full flex md:flex-row flex-col p-10">
-      <div className="m-5 w-1/2 flex justify-center">
-        <Image
+      <div className="min-h-full flex md:flex-row flex-col md:p-10" id="courses">
+        <div className="m-5 md:w-1/2 flex justify-center">
+          <Image
             src="/peri5.jpg"
             alt=""
             width={500}
@@ -86,63 +92,143 @@ export default function Home() {
             className="shadow-lg shadow-black rounded-2xl border-4 border-green-500"
           />
         </div>
-        <div className="m-5 w-1/2 space-y-5">
+        <div className="m-5 md:w-1/2 space-y-5">
           <h1 className="font-bold text-2xl text-orange-600">Our Course</h1>
           <h2 className="text-xl font-semibold">ELIGIBILITY FOR ADMISSION</h2>
-          <p className="text-lg">
+          <p className="md:text-lg">
             Female candidates of age 18 years and above and have passed their
             class XII examination or equivalent are eligible for admission.
           </p>
-          <h2 className="text-xl font-semibold">COURSE STRUCTURE AND DURATION:</h2>
-          <ul className="text-lg text-justify">
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> 
-            Advance diploma in pre-primary and primary teachers training Course
-            duration: One year 
+          <h2 className="text-xl font-semibold">
+            COURSE STRUCTURE AND DURATION:
+          </h2>
+          <ul className="md:text-lg text-justify">
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span>
+              Advance diploma in pre-primary and primary teachers training
+              Course duration: One year
             </li>
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> 
-            Diploma in Montessori &#40; pre-primary &#41; Teachers Training Course duration: Six Months
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span>
+              Diploma in Montessori &#40; pre-primary &#41; Teachers Training
+              Course duration: Six Months
             </li>
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> 
-            Certificate course in Montessori Teachers Training Course duration: Three months 
-            </li>            
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span>
+              Certificate course in Montessori Teachers Training Course
+              duration: Three months
+            </li>
           </ul>
-        </div>       
+        </div>
       </div>
 
-      <div className="courses min-h-full flex md:flex-row flex-col p-10">
-        <div className="my-5 w-1/2 space-y-5 mx-10">
+      <div className="flex md:flex-row flex-col md:p-10">
+        <div className="m-5 md:w-1/2 space-y-5 max-h-fit">
           <h1 className="font-bold text-2xl text-orange-600">Course Content</h1>
           <h2 className="text-xl font-semibold">Theory Papers:</h2>
           <ul className="text-lg text-justify">
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> Principles of Education</li>
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> Child Psychology</li>
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> School organization and administration</li>
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> Montessori method & Philosophy</li>
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> Early Childhood care and Education</li>
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span>{" "}
+              Principles of Education
+            </li>
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span> Child
+              Psychology
+            </li>
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span> School
+              organization and administration
+            </li>
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span>{" "}
+              Montessori method & Philosophy
+            </li>
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span> Early
+              Childhood care and Education
+            </li>
           </ul>
           <h2 className="text-xl font-semibold">Practical Papers:</h2>
           <ul className="text-lg text-justify">
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> Demonstration and Explanation of the Montessori Apparatus</li>
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> General Methods of Teaching</li>
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> Geometry Nomenclature</li>
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> Botany and Zoology nomenclature</li>
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> Environmental Science</li>
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> Basic Arithematic</li>
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> Rhymes & Story Telling</li>
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> General Knowledge</li>
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> Basic English & Phonetics</li>
-            <li><span className="text-orange-600 font-bold">&#x2713;</span> Psychology Projects</li>
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span>{" "}
+              Demonstration and Explanation of the Montessori Apparatus
+            </li>
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span>{" "}
+              General Methods of Teaching
+            </li>
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span>{" "}
+              Geometry Nomenclature
+            </li>
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span> Botany
+              and Zoology nomenclature
+            </li>
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span>{" "}
+              Environmental Science
+            </li>
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span> Basic
+              Arithematic
+            </li>
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span> Rhymes
+              & Story Telling
+            </li>
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span>{" "}
+              General Knowledge
+            </li>
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span> Basic
+              English & Phonetics
+            </li>
+            <li>
+              <span className="text-orange-600 font-bold">&#x2713;</span>{" "}
+              Psychology Projects
+            </li>
           </ul>
         </div>
-        <div className="m-5 w-1/2 flex justify-center">
-        <Image
+        <div className="m-5 md:w-1/2 flex justify-center">
+          <Image
             src="/peri4.jpg"
             alt=""
             width={500}
             height={500}
-            className="shadow-lg shadow-black rounded-2xl border-4 border-amber-600 object-cover"
+            className="shadow-lg shadow-black rounded-2xl border-4 border-green-500 object-cover"
           />
         </div>
+      </div>
+
+      <div id="blog" className="my-20">
+        <h1 className="text-center text-4xl text-orange-600 my-10">BLOG</h1>
+        <article className="flex md:flex-row flex-col">
+          {items.map((item) => {
+            return (
+              <Link href={"/Blog/" + item.id} key={item.id} className="md:w-1/3">
+                <ul className="bg-white m-5 p-5 rounded-md shadow-xl shadow-black h-80">
+                  <li className="text-xl font-bold">{item.title}</li>
+                  <li className="italic text-lg font-sans font-semibold">
+                    &quot;{parse(`${item.content}`.slice(0, 250))}....&quot;
+                  </li>
+                  <li className="text-orange-600 italic text-lg text-left font-semibold">{`${item.createdat}`.slice(0,10)}</li>
+                </ul>
+              </Link>
+            );
+          })}
+        </article>
+        <Link href="/Blog" className="flex justify-center m-10">
+          <button className="p-2 bg-orange-700 hover:bg-orange-700 text-white">
+            VIEW ALL
+          </button>
+        </Link>
+      </div>
+
+      <div id="contact">
+        
       </div>
     </main>
   );

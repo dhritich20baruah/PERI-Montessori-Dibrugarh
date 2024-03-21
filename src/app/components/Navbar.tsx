@@ -40,19 +40,24 @@ export default function Navbar() {
               About
             </li>
           </a>
-          <a href="#Portfolio">
+          <a href="#courses">
             <li className="hover:underline p-2">
-              Portfolio
+              Courses
             </li>
           </a>
-          <a href="#Blog">
+          <a href="#blog">
             <li className="hover:underline p-2">
               Blog
             </li>
           </a>
-          <a href="#Contact">
+          <a href="#contact">
             <li className="hover:underline p-2">
               Contact
+            </li>
+          </a>
+          <a href="/Admin">
+            <li className="hover:underline p-2">
+              Admin
             </li>
           </a>
         </ul>
@@ -95,24 +100,29 @@ export default function Navbar() {
                 Home
               </li>
             </Link>
-            <Link href="/About">
+            <Link href="#about">
               <li className="hover:underline p-2">
                 About
               </li>
             </Link>
-            <Link href="/Portfolio">
+            <Link href="#courses">
               <li className="hover:underline p-2">
-                Portfolio
+                Courses
               </li>
             </Link>
-            <Link href="/Blog">
+            <Link href="#blog">
               <li className="hover:underline p-2">
                 Blog
               </li>
             </Link>
-            <Link href="/Contact">
+            <Link href="#contact">
               <li className="hover:underline p-2">
                 Contact
+              </li>
+            </Link>
+            <Link href="/Admin">
+              <li className="hover:underline p-2">
+                Admin
               </li>
             </Link>
           </ul>
