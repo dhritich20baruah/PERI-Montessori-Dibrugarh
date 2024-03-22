@@ -69,8 +69,8 @@ export default async function Home() {
         </div>
         <div className="p-10 md:w-1/2 flex justify-center">
           <Image
-            src="/peri-h.jpg"
-            alt=""
+            src="/perih.webp"
+            alt="Head of the Institute"
             width={500}
             height={500}
             className="shadow-lg shadow-black"
@@ -194,7 +194,7 @@ export default async function Home() {
         </div>
         <div className="m-5 md:w-1/2 flex justify-center">
           <Image
-            src="/peri4.jpg"
+            src="/peri2.jpg"
             alt=""
             width={500}
             height={500}
