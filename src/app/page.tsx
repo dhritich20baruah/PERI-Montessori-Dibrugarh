@@ -227,9 +227,30 @@ export default async function Home() {
         </Link>
       </div>
 
-      <div id="contact">
-        
+      <footer className="bg-orange-600 text-white py-8" id="footer">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
+        <div>
+          <h2 className="text-lg font-semibold mb-2">Contact Us</h2>
+          <p>Email: peri.dibru@gmail.com</p>
+          <p>Phone: +91-99547-23621</p>
+          <p>Address: East Milan Nagar, Opp. Essar Petrol Pump, Dibrugarh</p>
+        </div>
+        <div className="mt-4 md:mt-0">
+          <h2 className="text-lg font-semibold mb-2">Follow Us</h2>
+          <div className="flex space-x-4">
+            <a href="#" className="text-white hover:text-gray-200">
+              <i className="fa fa-facebook"></i>
+            </a>
+            <a href="#" className="text-white hover:text-gray-200">
+              <i className="fa fa-instagram"></i>
+            </a>
+            <a href="#" className="text-white hover:text-gray-200">
+              <i className="fa fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
       </div>
+    </footer>
     </main>
   );
 }
