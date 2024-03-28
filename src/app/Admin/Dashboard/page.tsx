@@ -2,9 +2,14 @@
 import React, { useLayoutEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import TextEditor from "./TextEditor";
 
 export default function Dashboard() {
   const router = useRouter();
+  const [blogVisible, setBlogVisible] = useState(false);
+  const [noticeVisible, setNoticeVisible] = useState(false);
+  const [addVisible, setAddVisible] = useState(false);
+  const [recordVisible, setRecordVisible] = useState(false);
 
   useLayoutEffect(() => {
     const token = localStorage.getItem("token");
@@ -19,6 +24,10 @@ export default function Dashboard() {
     router.replace("/");
   }
 
+  function displayBlog(){
+    setBlogVisible(blogVisible => !blogVisible)
+  }
+
   return (
     <>
       <h1 className="text-3xl text-center font-semibold text-orange-600 m-10">Dashboard</h1>
@@ -27,7 +36,7 @@ export default function Dashboard() {
           <i className="fa fa-home"></i>
           <p>Home</p>
         </Link>
-        <div className="bg-orange-600 text-white text-center p-10 hover:text-orange-600 hover:bg-white shadow-lg shadow-black hover:cursor-pointer">
+        <div className="bg-orange-600 text-white text-center p-10 hover:text-orange-600 hover:bg-white shadow-lg shadow-black hover:cursor-pointer" onClick={displayBlog}>
           <i className="fa fa-edit"></i>
           <p>Blog</p>
         </div>
@@ -48,6 +57,9 @@ export default function Dashboard() {
             <p>Log out</p>
         </div>
       </div>
+      <div>
+        {blogVisible && <TextEditor/>}
+      </div>      
     </>
   );
 }
