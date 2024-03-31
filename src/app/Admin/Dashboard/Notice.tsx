@@ -10,7 +10,7 @@ type noticeType = {
 export default function Notices() {
   const [notice, setNotice] = useState("");
   const [date, setDate] = useState("");
-  const [noticeArr, setNoticeArr] = useState([])
+  const [noticeArr, setNoticeArr] = useState<noticeType[]>([])
 
   //Add notice
   async function addNotice(event: React.FormEvent) {
@@ -41,6 +41,13 @@ export default function Notices() {
       console.error("Error fetching data:", error);
     }
   };
+
+  //DELETE
+  const deleteNotice = async (id: string) => {
+    await axios.post(`/api/notice/${id}`)
+    alert('Notice Deleted')
+    window.location.reload()
+  }
   
   return (
     <main className="m-10">
@@ -69,7 +76,7 @@ export default function Notices() {
           />
         </label>
         <button
-          className="p-2 rounded-md text-white bg-orange-800"
+          className="p-2 rounded-md text-white bg-green-700"
           type="submit"
           onClick={addNotice}
         >
@@ -78,22 +85,23 @@ export default function Notices() {
       </form>
 
       <div className="my-5">
-        <h1 className="my-3 text-center">Notices</h1>
-        {/* {noticeArr.map((items) => {
+        <h1 className="my-3 text-center font-bold text-2xl">Notices</h1>
+         {noticeArr.map((items) => {
           return (
-            <ul className="flex justify-between my-2" key={items.id}>
-              <li>&gt; {items.notice}</li>
+            <ul className="flex justify-between my-5 font-semibold rounded-md bg-orange-400 p-2 text-white" key={items.id}>
+              <li>{items.written_on}</li>
+              <li>{items.notice}</li>
               <li>
                 <button
-                  className="rounded-md border-2 text-red-700 border-red-700 p-1 hover:bg-red-700 hover:text-white"
-                //   onClick={(id) => deleteNotice(items.id)}
+                  className="rounded-md border-2 text-red-700 border-red-700 p-1 hover:bg-red-700 hover:text-white bg-white"
+                  onClick={(id) => deleteNotice(items.id)}
                 >
                   Delete
                 </button>
               </li>
             </ul>
           );
-        })} */}
+        })} 
       </div>
     </main>
   );
